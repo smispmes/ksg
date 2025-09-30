@@ -44,11 +44,23 @@
             </div>
             <div class="hidden md:block">
               <div class="ml-10 flex items-baseline space-x-4">
-                <a
-                  href="#home"
-                  class="text-gray-600 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
-                  >Home</a
-                >
+                <!-- Home Dropdown -->
+                <div class="relative" id="home-dropdown-container">
+                  <button id="home-dropdown-button" class="text-gray-600 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium flex items-center">
+                    Home
+                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </button>
+                  <div id="home-dropdown-menu" class="hidden absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-30">
+                    <a href="#" onclick="event.preventDefault(); showUserAuth();" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      <span class="font-semibold text-green-600">User Access</span>
+                      <span class="block text-xs text-gray-500">For staff members</span>
+                    </a>
+                    <a href="#" onclick="event.preventDefault(); showAdminAuth();" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                      <span class="font-semibold text-red-600">Admin Access</span>
+                      <span class="block text-xs text-gray-500">For administrators</span>
+                    </a>
+                  </div>
+                </div>
                 <a
                   href="#metrics"
                   class="text-gray-600 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
@@ -68,24 +80,7 @@
                   href="#contact"
                   class="text-gray-600 hover:bg-gray-200 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium"
                   >Contact</a
-                >
-                <!-- Login Dropdown -->
-                <div class="relative" id="login-dropdown-container">
-                  <button id="login-dropdown-button" class="text-white bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-md text-sm font-medium flex items-center">
-                    Login
-                    <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                  </button>
-                  <div id="login-dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-30">
-                    <a href="#" onclick="event.preventDefault(); showUserAuth();" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      <span class="font-semibold text-green-600">User Access</span>
-                      <span class="block text-xs text-gray-500">For staff members</span>
-                    </a>
-                    <a href="#" onclick="event.preventDefault(); showAdminAuth();" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                      <span class="font-semibold text-red-600">Admin Access</span>
-                      <span class="block text-xs text-gray-500">For administrators</span>
-                    </a>
-                  </div>
-                </div>
+                > 
               </div>
             </div>
             <div class="-mr-2 flex md:hidden">
@@ -3157,19 +3152,19 @@
             });
         });
 
-        // Login Dropdown
-        const loginDropdownButton = document.getElementById('login-dropdown-button');
-        const loginDropdownMenu = document.getElementById('login-dropdown-menu');
-        const loginDropdownContainer = document.getElementById('login-dropdown-container');
+        // Home Dropdown
+        const homeDropdownButton = document.getElementById('home-dropdown-button');
+        const homeDropdownMenu = document.getElementById('home-dropdown-menu');
+        const homeDropdownContainer = document.getElementById('home-dropdown-container');
 
-        loginDropdownButton.addEventListener('click', () => {
-            loginDropdownMenu.classList.toggle('hidden');
+        homeDropdownButton.addEventListener('click', () => {
+            homeDropdownMenu.classList.toggle('hidden');
         });
 
         // Close dropdown if clicking outside
         document.addEventListener('click', (event) => {
-            if (!loginDropdownContainer.contains(event.target)) {
-                loginDropdownMenu.classList.add('hidden');
+            if (!homeDropdownContainer.contains(event.target)) {
+                homeDropdownMenu.classList.add('hidden');
             }
         });
       });
